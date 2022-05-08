@@ -37,7 +37,7 @@ async function run() {
         // All fruits items
         app.get('/inventory', async (req, res) => {
             const query = {}
-            const cursor = itemsCollection.find(query)
+            const cursor = itemsCollection.find(quety)
             const items = await cursor.toArray()
             res.send(items)
         })
