@@ -67,7 +67,7 @@ async function run() {
 
         // Inventory Items DELETE
         app.delete('/inventory/:id', async (req, res) => {
-            const id = req.param.id;
+            const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const result = await itemsCollection.deleteOne(query);
             res.send(result);
@@ -123,7 +123,7 @@ async function run() {
         // JWT login
         app.post('/login', async (req, res) => {
             const user = req.body
-            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN, {
                 expiresIn: '30d'
             })
             res.send({ accessToken })
