@@ -123,8 +123,8 @@ async function run() {
         // JWT login
         app.post('/login', async (req, res) => {
             const user = req.body
-            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN, {
-                expiresIn: '30d'
+            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+                expiresIn: '28d'
             })
             res.send({ accessToken })
         })
@@ -139,7 +139,7 @@ run().catch(console.dir)
 
 
 app.get('/', (req, res) => {
-    res.send('Mission Assignment 11 CRUD Operation!!!')
+    res.send('CRUD Operation Running.........')
 })
 
 app.listen(port, () => {
