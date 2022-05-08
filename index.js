@@ -54,7 +54,7 @@ async function run() {
         app.put('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const updateFruits = req.body;
-            const filter = { id: ObjectId(id) };
+            const filter = { _id: ObjectId(id) };
             const options = { upsert: true };
             const updated = {
                 $set: {
@@ -67,7 +67,7 @@ async function run() {
 
         // Inventory Items DELETE
         app.delete('/inventory/:id', async (req, res) => {
-            const id = req.params.id;
+            const id = req.param.id;
             const query = { _id: ObjectId(id) };
             const result = await itemsCollection.deleteOne(query);
             res.send(result);
