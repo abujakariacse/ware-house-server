@@ -37,7 +37,7 @@ async function run() {
         // All fruits items
         app.get('/inventory', async (req, res) => {
             const query = {}
-            const cursor = itemsCollection.find(quety)
+            const cursor = itemsCollection.find(query)
             const items = await cursor.toArray()
             res.send(items)
         })
@@ -54,7 +54,7 @@ async function run() {
         app.put('/inventory/:id', async (req, res) => {
             const id = req.params.id;
             const updateFruits = req.body;
-            const filter = { _id: ObjectId(id) };
+            const filter = { id: ObjectId(id) };
             const options = { upsert: true };
             const updated = {
                 $set: {
